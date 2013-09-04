@@ -1,0 +1,523 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{times}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\definecolor{blue}{rgb}{0.1,0.1,0.65}
+\hypersetup{
+    colorlinks, urlcolor={blue}
+}
+
+\hypersetup{pdfpagemode=UseNone} % don't show bookmarks on initial view
+
+\pagestyle{headings}
+\markright{Thirteen years of R/qtl}
+
+% revise margins
+\setlength{\headheight}{10pt}
+\setlength{\headsep}{15pt}
+\setlength{\topmargin}{-25pt}
+\setlength{\topskip}{0in}
+\setlength{\textheight}{9in}
+\setlength{\footskip}{0.0in}
+\setlength{\oddsidemargin}{0.0in}
+\setlength{\evensidemargin}{0.0in}
+\setlength{\textwidth}{6.5in}
+
+% make initial part of figure captions in bold
+\renewcommand{\figurename}{\textbf{Figure}}
+\renewcommand \thefigure {\textbf{\arabic{figure}}}
+
+\newenvironment{hanging}
+{\begin{list}{}
+        {\setlength{\labelwidth}{0in}
+         \setlength{\leftmargin}{1em}
+         \setlength{\itemindent}{-1em}
+         \setlength{\parsep}{0in}
+         \setlength{\itemsep}{0in}
+        }
+}
+{\end{list}}
+
+\begin{document}
+
+% used to make footnote without a symbol
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\thispagestyle{empty}
+
+\begin{center}
+\large
+\textbf{Thirteen years of R/qtl: Just barely
+  sustainable}\footnote[0]{This article is licensed under the
+  \href{http://creativecommons.org/licenses/by/3.0/}{Creative
+    Commons Attribution 3.0 Unported License (CC BY 3.0)}.}
+
+\bigskip
+
+
+\href{http://www.biostat.wisc.edu/~kbroman}{Karl W. Broman}
+
+Department of Biostatistics and Medical Informatics
+
+University of Wisconsin--Madison
+
+{\small \tt kbroman@biostat.wisc.edu}
+
+\bigskip
+
+\begin{quote}
+R/qtl is an R package for mapping quantitative trait loci (genetic
+loci that contribute to variation in quantitative traits) in
+experimental crosses. Its development began in 2000.  There have been
+32 software releases since 2002.  The latest release contains 35k lines
+of R code and 24k lines of C code, plus 15k lines of code for the manual
+pages.  A key to its success is
+that it remains a central tool for the chief developer's own research
+work, and so its maintenance is of selfish importance.
+\end{quote}
+
+\end{center}
+
+\setlength{\columnsep}{0.5cm}
+
+\begin{multicols}{2}
+If two inbred mouse strains show consistent differences in a
+quantitative trait (for example, blood pressure), one can be confident
+that the difference is genetic. An experimental cross between the two
+strains can be used to identify the genetic loci (called quantitative
+trait loci, QTL) that contribute to the trait difference: we seek
+genomic regions for which genotypes are associated with the trait.
+
+Numerous software packages for QTL analysis are available, some
+commercial (e.g.,
+\href{http://www.kyazma.nl/index.php/mc.MapQTL}{MapQTL} and
+\href{http://www.multiqtl.com}{MultiQTL}) and some free
+(e.g. \href{http://www.broadinstitute.org/ftp/distribution/software/mapmaker3}{Mapmaker/QTL},
+and \href{http://statgen.ncsu.edu/qtlcart/index.php}{QTL
+Cartographer}).
+
+My own QTL mapping software, \href{http://www.rqtl.org}{R/qtl} (Broman
+et al.\ 2003), is developed as an add-on package to the widely used
+general statistical software, \href{http://www.r-project.org}{R} (R
+Core Team 2013). The software is open source, licensed under
+\href{http://www.gnu.org/licenses/gpl.html}{GPL3}, and currently
+hosted on \href{http://github.com/kbroman/qtl.git}{GitHub}.
+
+
+
+
+\bigskip
+\currentpdfbookmark{History}{History}
+\noindent \textbf{\sffamily History}\\*[8pt]
+I became interested in QTL mapping in graduate school, twenty years ago.
+Mark Neff introduced me to Lander and Botstein's
+paper on interval mapping (Lander and Botstein 1989), which remains
+the most commonly used QTL analysis method.
+
+In the fall of 1999, I joined the Department of Biostatistics at Johns
+Hopkins University as an assistant professor. In February, 2000, Gary
+Churchill visited me from the Jackson Laboratory, and we discussed our
+shared interest in QTL analysis methods and the need for more advanced
+software. Gary suggested that we write our own QTL mapping package. He
+was thinking Matlab, but I was keen to use R. (R version 1.0.0 was
+released the following week.) R won out over Matlab largely because I
+developed a working prototype more quickly. I had recently written
+some C code implementing the hidden Markov model technology (Baum et
+al.\ 1970) for the treatment of missing genotype information for QTL
+analysis in experimental crosses.  This served as the starting point
+for the package.
+
+Our main goal was for the software to enable the exploration of
+multiple-QTL models. We also wanted it to be easily extendible as new
+methods were developed.  My initial concept was to implement all QTL
+mapping methods, good and bad, so that their performance could be
+compared within a single package.
+
+Much of the development of R/qtl occurred during a three-month
+sabbatical I spent at the Jackson Laboratory in Fall, 2001.  (It is
+easy to remember the date, because I was there on 11 September 2001.)  Hao
+Wu, a software engineer working with Gary from 2001--2005, contributed
+a great deal to the core of R/qtl. In 2009--2010, Danny Arends (with
+some assistance from Pjotr Prins and me) incorporated Ritsert Jansen's
+MQM code (Jansen 1993, 1994; Jansen and Stam 1994), previously
+available only in commercial software, as part of R/qtl (Arends et
+al.\ 2010).
+
+
+
+
+\begin{figure*}[tbh]
+\begin{center}
+\includegraphics{rqtl_lines_code.pdf}
+\caption{Numbers of lines of code in released versions of R/qtl over
+  time.}
+\end{center}
+\end{figure*}
+
+
+
+\bigskip
+\currentpdfbookmark{About me}{About me}
+\noindent \textbf{\sffamily About me}\\*[8pt]
+I am a applied statistician. My primary interest is in helping other
+scientists answer questions using data. But that generally requires
+the development of new statistical methods, and such methods must be
+implemented in software.  Thus, I spend a considerable amount of time
+programming.
+
+I have little formal training in programming or software engineering,
+and I am not a specialist in computational statistics.  But I think
+it's important for an applied statistician to be self-sufficient: We
+can't rely on others to develop the tools we need but must be able to
+do that ourselves.
+
+
+
+\bigskip
+\currentpdfbookmark{Strengths}{Strengths}
+\noindent \textbf{\sffamily Strengths}\\*[8pt]
+R/qtl has a number of strengths. It is comprehensive: It includes
+implementations of many QTL mapping methods, and it has a number of
+tools for the fit and exploration of multiple-QTL models. It has
+extensive facilities for data diagnostics and visualizations. It can
+be extended, as the results of important intermediate calculations,
+that serve as the basis for any QTL mapping method, are exposed to the
+user.
+
+The central calculations are coded in C, for speed, but R is used for
+manipulating data objects and for graphics. (See Figure~1.)
+
+Developing the software as a package for R has a number of advantages
+for the developer, particularly to make use of R's facilities for
+graphics and input/output, as well as its extensive math/stat software
+library. The R packaging system and the
+\href{http://cran.r-project.org}{Comprehensive R Archive Network (CRAN)}
+simplifies the software installation process and makes it easy to
+provide manual/help facilities.
+
+The user also benefits by having the QTL mapping software embedded
+within general statistical software, for further data analysis before
+and after the QTL analysis, and for developing specially-tailored
+visualizations. R also provides an excellent interactive environment
+for data analysis.
+
+A number of related packages are coordinated with R/qtl, using a
+common data structure or input file format and some shared functions.
+Examples include \href{http://www.ssg.uab.edu/qtlbim/}{qtlbim}
+(Yandell et al.\ 2007),
+\href{http://cran.r-project.org/web/packages/wgaim/index.html}{wgaim}
+(Taylor and Verbyla 2011),
+and \href{http://cran.r-project.org/web/packages/dlmap/}{dlmap} (Huang
+et al.\ 2012).
+
+
+\bigskip
+\currentpdfbookmark{Weaknesses}{Weaknesses}
+\noindent \textbf{\sffamily Weaknesses}\\*[8pt]
+R/qtl also has a number of weaknesses. There has largely been one
+developer (and support staff), and so many desired features have not
+been implemented. We never wrote formal specifications for the
+internal data formats, which makes it more difficult for others to
+contribute code to the project.
+
+There have been a number of memory management issues, particularly
+regarding the copying of large datasets in memory as it is moved from
+R to C. This can reduce performance in extremely high-dimensional
+applications.
+
+The biggest weakness is that the central data structure is too
+restrictive. This makes it difficult to extend the software beyond
+the simplest types of experimental crosses.
+
+
+\bigskip
+\currentpdfbookmark{Some really bad code}{Some really bad code}
+\noindent \textbf{\sffamily Some really bad code}\\*[8pt]
+More embarrassing than the above weaknesses is that, while R/qtl
+contains some good code (like the HMM implementation), there is also
+some really terrible code. I've learned a great deal about programming
+while developing R/qtl, but it's hard to go back and replace old code.
+(And some of this code was obviously bad when written and just should
+have been constructed with greater care.)
+
+The worst piece of code (now fixed: see
+\href{https://github.com/kbroman/qtl/commit/4cd486}{the commit in the
+git repository} on \href{http://github.com}{GitHub})
+involved
+\href{http://kbroman.wordpress.com/2011/08/17/the-stupidest-r-code-ever/}{a
+really stupid approach} to find the first non-blank element in a
+vector of character strings. The code worked fine in small datasets,
+and so it took a while to discover the problem. (Open source means
+everyone can see my stupid mistakes. Version control means everyone
+can see every stupid mistake I've ever made.)
+
+In many cases, functions aren't split up into short reusable functions
+the way they should be, and there is a lot of repeated code.  And some
+of the functions have very long lists of arguments, which can be
+really intimidating to users.
+
+In lots of cases, bugs were fixed by adding little band-aids of code.
+Functions get longer and longer to handle more and more special cases,
+to the point that they are nearly unreadable.  These very long,
+complex functions are a barrier to the further development of the
+software.
+
+The worst offender is
+\href{https://github.com/kbroman/qtl/blob/master/R/scantwo.R}{\tt scantwo()},
+for performing a two-dimensional genome scan for pairs of QTL.  The R
+function is 1388 lines long (that is 4\% of the R code in the
+package). And the R code is just moving data and results around.  The
+actual calculations are performed in C, in a series of files that
+comprise 4725 lines --- more than 20\% of the C code in the package.
+
+
+
+\bigskip
+\currentpdfbookmark{Version control}{Version control}
+\noindent \textbf{\sffamily Version control}\\*[8pt]
+In the first eight years of developing R/qtl, I didn't use formal
+version control.  Initially, I was simply editing the code in place
+and saving copies of releases when I sent them to the
+\href{http://cran.r-project.org}{R Archive}.  (The earliest version
+I've kept is version 0.96-5 from September, 2002.) Incorporating
+others' contributions was often a hassle.
+
+In the fall of 2006, \'Saunak Sen and I used a
+\href{http://subversion.apache.org/}{Subversion} repository to
+facilitate the development of our book about QTL mapping and R/qtl
+(Broman and Sen 2009), but it wasn't until January, 2008, that I began
+to use subversion for R/qtl, as well. In February, 2009, Pjotr Prins
+helped me to switch to \href{http://git-scm.com}{git} and to place the
+R/qtl repository on \href{http://github.com}{GitHub}.
+
+I'm not sure how I managed the project before adopting version
+control. Version control makes it so easy to try things out without
+fear of breaking working code. And collaboration on software development is
+terribly tedious and inefficient without version control.
+
+
+\bigskip
+\currentpdfbookmark{User support}{User support}
+\noindent \textbf{\sffamily User support}\\*[8pt]
+Helping users to solve their research problems can be quite rewarding.
+But it can also require considerable patience. I respond to several queries per
+week about R/qtl, many through a
+\href{http://groups.google.com/group/Rqtl-disc}{Google Group} that was
+started in September, 2004, but many others directly via email.
+
+I had hoped that the
+\href{http://groups.google.com/group/Rqtl-disc}{R/qtl discussion
+group} would become a network of folks answering each others'
+questions about R/qtl and QTL mapping, but I am basically the only one
+answering questions. I think that's partly because, to avoid spam, I
+moderate all messages, at which point I generally try to answer
+them. Thus, participants see my answer at basically the same time as
+they see the original question. But at least these electronic
+conversations are public and searchable.
+
+I've helped many people revise their data files for use with R/qtl.
+It's very hard to predict what might go wrong in data import and to
+provide appropriate error messages.
+
+Questions are often frustrating. They may provide too little detail
+(``I tried such-and-such but \emph{it didn't work}.'') or too much
+(``Could you please look at the attached 25-page Word document
+containing code and output and tell me if I'm doing something wrong?'')
+Many questions are not so much about the software but are more general
+scientific or data analysis questions.
+
+Many questions would be answered by a careful reading of
+the documentation, but software documentation is often dreadfully
+boring. I've learned that the most popular documentation are the short
+tutorials with practical examples clearly illustrating important
+tools. These are time-consuming to create (and maintain).
+
+Some things are \emph{possible\/} in R/qtl but are not well documented
+and not really feasible except for users with considerable programming
+and analysis experience. It feels wrong to say, ``That \emph{is\/}
+possible, but I don't have the time to explain how.''
+
+It was helpful to have written a book about QTL mapping and R/qtl
+(Broman and Sen 2009), but it's frustrating to watch the publisher
+nearly double its street price. If I could do it again, I would
+self-publish.
+
+
+\bigskip
+\currentpdfbookmark{Sustainable academic software}{Sustainable academic software}
+\noindent \textbf{\sffamily Sustainable academic software}\\*[8pt]
+Why put so much effort into software development? The principal
+advantage is the software itself: QTL analysis is the focus of much of
+my own research, and software that is easy for others to use is also
+easy for me to use. Second, R/qtl provides a platform for me to
+distribute implementations of QTL mapping methods that I develop, such
+as the two-part model of Broman (2003) and the model
+selection methods of Broman and Speed (2002) and Manichaikul et
+al.\ (2007). Third, the software has led to many interesting
+consulting-type interactions and a good number of collaborations (leading
+to co-authorship on papers and some grant support). Fourth, my own
+methods grant is much more attractive with a successful software aim.
+Finally, the software supports others' research, and I view my primary
+duty as a statistician and an academic is to help others.
+
+I think the key to the sustainability of piece of scientific software
+is that the developer continues to use the software
+for his/her own research. So often, the developer moves on to other
+research problems, and the software is orphaned.
+
+\bigskip
+\currentpdfbookmark{Future}{Future}
+\noindent \textbf{\sffamily Future} \\*[8pt]
+As Fred Brooks said in \emph{The Mythical Man Month},
+``Plan to throw one away; you will anyhow.'' (Brooks 1975,
+Ch.\ 11) This was
+restated by Eric Raymond in \emph{The Cathedral and The Bazaar}:
+``You
+often don't really understand the problem until after the first time
+you implement a solution. The second time, maybe you know enough to do
+it right.'' (Raymond 1999)
+
+In collaboration with Danny Arends and Pjotr Prins, I've initiated a
+reimplementation of R/qtl, with a focus on high-dimensional data and
+more modern cross designs, such as the Collaborative Cross (Complex
+Trait Consortium 2004)
+and the Mouse Diversity Outbred Population (Svenson et al.\ 2012).
+We're writing the new project, \href{https://github.com/qtlHD/qtlHD}{qtlHD},
+in the \href{http://dlang.org/}{D programming language}. D code is powerful
+and efficient but also trustworthy, though the use of D, which is not
+yet so widely known as C or C++, may be a
+barrier to participation in the software's development. We will also
+focus on interactive graphical tools, implemented with the
+Javascript library, \href{http://d3js.org/}{D3}.
+
+There has been a renewal of interest in QTL analysis, particularly
+with the growth of eQTL analysis, in which genome-wide gene expression
+measures are treated as phenotypes (see, for example, Jansen and Nap
+2001; Tesson and Jansen 2009).  We hope that qtlHD will become
+a popular platform for the analysis of large-scale eQTL data, as R/qtl
+has been for more traditional-sized QTL projects.
+
+\bigskip
+\currentpdfbookmark{Acknowledgments}{Acknowledgments}
+\noindent \textbf{\sffamily Acknowledgments} \\*[8pt]
+This work was supported in part by NIH grant R01 GM074244.  Numerous
+people have contributed to R/qtl over the years: Danny Arends, Gary
+Churchill, Ritsert Jansen, Steffen Moeller, Pjotr Prins, \'Saunak Sen,
+Laura Shannon, Hao Wu, and Brian Yandell.
+
+
+
+\bigskip
+\currentpdfbookmark{References}{References}
+\noindent \textbf{\sffamily References}
+\begin{hanging}
+
+\item Arends D, Prins P, Jansen RC, Broman KW (2010) R/qtl:
+  \href{http://www.ncbi.nlm.nih.gov/pubmed/20966004}{High-throughput
+    multiple QTL mapping}. Bioinformatics 26:2990--2992
+
+\item Baum LE, Petrie T, Soules G, Weiss N (1970)
+  \href{http://projecteuclid.org/euclid.aoms/1177697196}{A
+    maximization technique occurring in the statistical analysis of
+    probabilistic functions of Markov chains}. Ann Math Stat
+  41:164--171
+
+\item Broman KW (2003)
+  \href{http://www.ncbi.nlm.nih.gov/pubmed/12663553}{Mapping
+    quantitative trait loci in the case of a spike in the phenotype
+    distribution}. Genetics 163:1169--1175
+
+\item Broman KW, Sen \'S (2009) \href{http://www.rqtl.org/book}{\emph{A
+  Guide to QTL Mapping with R/qtl}}. Springer, New York
+
+\item Broman KW, Speed TP (2002)
+  \href{http://dx.doi.org/10.1111/1467-9868.00354}{A model selection
+    approach for the identification of quantitative trait loci in
+    experimental crosses (with discussion)}. J Roy Stat Soc B
+  64:641--656, 731--775
+
+\item Broman KW, Wu H, Sen \'S, Churchill GA (2003)
+  \href{http://www.ncbi.nlm.nih.gov/pubmed/12724300}{R/qtl: QTL
+    mapping in experimental crosses}. Bioinformatics 19:889--890
+
+\item Brooks FP (1975)
+  \href{http://archive.org/details/mythicalmanmonth00fred}{\emph{The
+      Mythical Man Month: Essays on Software Engineering}}. Addison-
+  Wesley, Reading, MA
+
+\item Complex Trait Consortium (2004)
+  \href{http://www.ncbi.nlm.nih.gov/pubmed/15514660}{The Collaborative
+  Cross, a community resource for the genetic analysis of complex
+  traits}. Nat Genet 36:1133--1137
+
+\item Huang BE, Shah R, George AW (2012)
+  \href{http://www.jstatsoft.org/v50/i06/}{dlmap: An R package for
+    mixed model QTL and association analysis}. J Statist Soft 50:1--22
+
+\item Jansen RC (1993)
+  \href{http://www.ncbi.nlm.nih.gov/pubmed/8224820}{Interval mapping
+    of multiple quantitative trait loci}. Genetics 135:205--211
+
+\item Jansen RC (1994)
+  \href{http://www.ncbi.nlm.nih.gov/pubmed/7851782}{Controlling the
+    type I and type II errors in mapping quantitative trait
+    loci}. Genetics 138:871--881
+
+\item Jansen RC, Nap JP (2001)
+  \href{http://www.ncbi.nlm.nih.gov/pubmed/11418218}{Genetical
+    genomics: The added value from segregation}. Trends Genet
+  17:388--391
+
+\item Jansen RC, Stam P (1994)
+  \href{http://www.ncbi.nlm.nih.gov/pubmed/8013917}{High resolution of
+    quantitative traits into multiple loci via interval
+    mapping}. Genetics 136:1447--1455
+
+\item Lander ES, Botstein D (1989)
+  \href{http://www.ncbi.nlm.nih.gov/pubmed/2563713}{Mapping Mendelian
+    factors underlying quantitative traits using RFLP linkage
+    maps}. Genetics 121:185--199
+
+\item Manichaikul A, Moon JY, Sen \'S, Yandell BS, Broman KW (2009)
+  \href{http://www.ncbi.nlm.nih.gov/pubmed/19104078}{A model selection
+    approach for the identification of quantitative trait loci in
+    experimental crosses, allowing epistasis}. Genetics 181:1077-1086
+
+\item R Core Team (2013) \href{http://www.r-project.org}{R: A language
+  and environment for statistical computing}.  R Foundation for
+  Statistical Computing, Vienna, Austria
+
+\item Raymond ES (1999)
+  \href{http://www.catb.org/esr/writings/homesteading/cathedral-bazaar/}{\emph{The
+      Cathedral \& The Bazaar}}. O'Reilly, Sebastopol, CA
+
+\item Svenson KL, Gatti DM, Valdar W, Welsh CE, Cheng R, Chesler EJ,
+  Palmer AA, McMillan L, Churchill GA (2012)
+  \href{http://www.ncbi.nlm.nih.gov/pubmed/22345611}{High resolution
+    genetic mapping using the Mouse Diversity Outbred
+    Population}. Genetics 190: 437--447
+
+\item Taylor J, Verbyla A (2011)
+  \href{http://www.jstatsoft.org/v40/i07/}{R package wgaim: QTL
+    analysis in bi-parental populations using linear mixed models}. J
+  Statist Soft 40:1--18
+
+\item Tesson BM, Jansen RC (2009)
+  \href{http://www.ncbi.nlm.nih.gov/pubmed/19763934}{eQTL analysis in
+    mice and rats}. Methods Mol Biol 573:285--309
+
+\item Yandell BS, Mehta T, Banerjee S, Shriner D, Venkataraman R, Moon
+  JY, Neely WW, Wu H, Smith R, Yi N (2007)
+  \href{http://www.ncbi.nlm.nih.gov/pubmed/17237038}{R/qtlbim: QTL
+    with Bayesian Interval Mapping in experimental
+    crosses}. Bioinformatics 23:641--643
+
+
+\end{hanging}
+
+\end{multicols}
+
+\end{document}

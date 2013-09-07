@@ -1,6 +1,6 @@
 ## Thirteen years of R/qtl: Just barely sustainable
 
-This repository contains the source for a manuscript that I plan to submit for the
+This repository contains the source for a manuscript that I submitted for the
 [Workshop on Sustainable Software for Science](http://wssspe.researchcomputing.org.uk/cfp/)
 in Denver, Colorado, on 17 Nov 2013.
 

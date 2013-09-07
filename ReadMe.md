@@ -1,7 +1,7 @@
 ## Thirteen years of R/qtl: Just barely sustainable
 
 This repository contains the source for a manuscript that I submitted for the
-[Workshop on Sustainable Software for Science](http://wssspe.researchcomputing.org.uk/cfp/)
+[Workshop on Sustainable Software for Science](http://wssspe.researchcomputing.org.uk)
 in Denver, Colorado, on 17 Nov 2013.
 
 The PDF is available at [arXiv.org](http://arXiv.org):

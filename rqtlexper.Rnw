@@ -1,4 +1,4 @@
-\documentclass[letterpaper]{article}
+\documentclass[letterpaper,12pt]{article}
 
 % knitr stuff %
 <<load_counts, echo=FALSE, results="hide">>=
@@ -122,8 +122,6 @@ association is shown in Figure~1B.
 
 \includegraphics[width=\textwidth]{fig1.pdf}
 
-\bigskip
-
 \caption{Typical analysis results from R/qtl. \textbf{A}: LOD curves
   across the genome, measuring association between phenotype and
   genotype across, and \textbf{B}: Association between genotype and
@@ -229,8 +227,6 @@ documentation files, the code is about
 \begin{center}
 
 \includegraphics[width=\textwidth]{fig2.pdf}
-
-\bigskip
 
 \caption{Numbers of lines of code in released versions of R/qtl over
   time. (Yellow and blue correspond to R and C code, respectively;

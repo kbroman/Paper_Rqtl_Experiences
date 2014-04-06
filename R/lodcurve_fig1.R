@@ -12,8 +12,8 @@ out.mar <- scanone(calc.genoprob(grav), phe=phe, method="hk")
 max.mar <- max(out)
 marker <- rownames(max(out.mar))
 
-pdf("../fig1.pdf", width=7, height=4.3, pointsize=10, onefile=TRUE)
-par(mar=c(3.6,3.6,2.6,0.6), col.lab="darkslateblue")
+pdf("../fig1.pdf", width=7, height=3.8, pointsize=10, onefile=TRUE)
+par(mar=c(3.1,3.1,2.6,0.6), col.lab="darkslateblue")
 
 layout(cbind(1, 2), width=c(2.5, 1))
 source("myplotscanone.R")

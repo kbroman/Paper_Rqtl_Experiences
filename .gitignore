@@ -1,6 +1,10 @@
-*.pdf
-*.aux
 *.log
-.RData
+*.aux
+*.pdf
 *.Rout
+*.bbl
+*.blg
+.RData
 *.out
+Github
+rqtlexper.tex

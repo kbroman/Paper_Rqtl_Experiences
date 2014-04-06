@@ -1,0 +1,7 @@
+n_versions = 32
+lines_R = 34934
+lines_C = 24301
+lines_man = 15183
+
+n_scantwo_lines = 1388
+n_scantwo_c_lines = 4725

@@ -375,7 +375,7 @@ duty as a statistician and an academic is to help others.
 I think the key to the sustainability of piece of scientific software
 is that the developer continues to use the software
 for his/her own research. So often, the developer moves on to other
-research problems, and the software is orphaned. 
+research problems, and the software is orphaned.
 
 But software development requires considerable time and
 support. Often, researchers don't recognize the many indirect benefits

@@ -116,6 +116,26 @@ phenotype and genotype are displayed in Figure~1A; a plot of
 phenotype vs.\ genotype at the marker exhibiting the strongest
 association is shown in Figure~1B.
 
+% Figure 1
+\begin{figure*}[tbh]
+\begin{center}
+
+\includegraphics[width=\textwidth]{fig1.pdf}
+
+\bigskip
+
+\caption{Typical analysis results from R/qtl. \textbf{A}: LOD curves
+  across the genome, measuring association between phenotype and
+  genotype across, and \textbf{B}: Association between genotype and
+  phenotype at the marker with the strongest association. The data
+  are from \cite{Moore2013}; panel B was created using the R package
+  \href{http://www.cbs.dtu.dk/~eklund/beeswarm/}{beeswarm}.
+ }
+\end{center}
+\end{figure*}
+\newpage
+
+
 Numerous software packages for QTL analysis are available, some
 commercial (e.g.,
 \href{http://www.kyazma.nl/index.php/mc.MapQTL}{MapQTL} and
@@ -204,6 +224,19 @@ and C, as well as in the R documentation files. Ignoring the
 documentation files, the code is about
 \Sexpr{round(lines_R/(lines_R+lines_C)*100,-1)}\% R and
 \Sexpr{round(lines_C/(lines_R+lines_C)*100,-1)}\% C.
+
+\begin{figure*}[tbh]
+\begin{center}
+
+\includegraphics[width=\textwidth]{fig2.pdf}
+
+\bigskip
+
+\caption{Numbers of lines of code in released versions of R/qtl over
+  time. (Yellow and blue correspond to R and C code, respectively;
+  pink is for the R documentation files.)}
+\end{center}
+\end{figure*}
 
 Developing the software as a package for R has a number of advantages
 for the developer, particularly to make use of R's facilities for
@@ -436,42 +469,6 @@ Laura Shannon, Hao Wu, and Brian Yandell.
 
 \bibliographystyle{vancouver}
 \bibliography{rqtlexper}
-
-
-\newpage
-
-
-\begin{figure*}[tbh]
-\begin{center}
-
-\includegraphics[width=\textwidth]{fig1.pdf}
-
-\bigskip
-
-\caption{Typical analysis results from R/qtl. \textbf{A}: LOD curves
-  across the genome, measuring association between phenotype and
-  genotype across, and \textbf{B}: Association between genotype and
-  phenotype at the marker with the strongest association. The data
-  are from \cite{Moore2013}; panel B was created using the R package
-  \href{http://www.cbs.dtu.dk/~eklund/beeswarm/}{beeswarm}.
- }
-\end{center}
-\end{figure*}
-\newpage
-
-
-\begin{figure*}[tbh]
-\begin{center}
-
-\includegraphics[width=\textwidth]{fig2.pdf}
-
-\bigskip
-
-\caption{Numbers of lines of code in released versions of R/qtl over
-  time. (Yellow and blue correspond to R and C code, respectively;
-  pink is for the R documentation files.)}
-\end{center}
-\end{figure*}
 
 
 

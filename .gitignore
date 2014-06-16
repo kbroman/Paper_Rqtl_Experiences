@@ -6,5 +6,6 @@
 *.blg
 .RData
 *.out
+*.eps
 Github
 rqtlexper.tex

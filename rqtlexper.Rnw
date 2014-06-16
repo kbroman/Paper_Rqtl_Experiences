@@ -120,7 +120,7 @@ association is shown in Figure~1B.
 \begin{figure*}[tbh]
 \begin{center}
 
-\includegraphics[width=\textwidth]{fig1.pdf}
+\includegraphics[width=\textwidth]{fig1.eps}
 
 \caption{Typical analysis results from R/qtl. \textbf{A}: LOD curves
   across the genome, measuring association between phenotype and
@@ -226,7 +226,7 @@ documentation files, the code is about
 \begin{figure*}[tbh]
 \begin{center}
 
-\includegraphics[width=\textwidth]{fig2.pdf}
+\includegraphics[width=\textwidth]{fig2.eps}
 
 \caption{Numbers of lines of code in released versions of R/qtl over
   time. (Yellow and blue correspond to R and C code, respectively;

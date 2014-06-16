@@ -8,7 +8,7 @@ lines <- lines[nrow(lines):1,]
 library(lubridate)
 lines[,2] <- dmy(as.character(lines[,2]))
 
-pdf("../fig2.pdf", width=7, height=4, pointsize=10, onefile=TRUE)
+postscript("../fig2.eps", width=7, height=4, pointsize=12, onefile=FALSE, horizontal=FALSE)
 par(mar=c(2.6, 4.3, 0.3, 0.1),las=1,fg="black",col="black",col.axis="black",col.lab="darkslateblue",
     bg=bgcolor,bty="n")
 

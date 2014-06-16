@@ -12,13 +12,13 @@ out.mar <- scanone(calc.genoprob(grav), phe=phe, method="hk")
 max.mar <- max(out)
 marker <- rownames(max(out.mar))
 
-pdf("../fig1.pdf", width=7, height=3.8, pointsize=10, onefile=TRUE)
-par(mar=c(3.1,3.1,2.6,0.6), col.lab="darkslateblue")
+postscript("../fig1.eps", width=7, height=3.8, pointsize=12, onefile=FALSE, horizontal=FALSE)
+par(mar=c(3.6,4.3,2.6,0.6), col.lab="darkslateblue")
 
 layout(cbind(1, 2), width=c(2.5, 1))
 source("myplotscanone.R")
 myplotscanone(out, col="gray90", bgrect="gray90", bandcol="gray80",
-              ylab="", mgp=c(2.2, 1, 0), lwd=0, yaxt="n", xaxt="n")
+              ylab="", mgp=c(2.2, 1, 0), lwd=2, yaxt="n", xaxt="n")
 title(ylab="LOD score", mgp=c(2, 1, 0))
 yat <- pretty(out[,3])
 abline(h=yat, col="white")
@@ -47,7 +47,7 @@ z <- beeswarm(y ~ g, method="center", col="white",
 u <- par("usr")
 rect(u[1], u[3], u[2], u[4], col="gray90")
 
-text(u[1]-diff(u[1:2])*0.1*2.5, u[4]+diff(u[3:4])*0.06, "B",
+text(u[1]-diff(u[1:2])*0.1*4, u[4]+diff(u[3:4])*0.06, "B",
      font=2, xpd=TRUE, cex=1.3)
 
 abline(v=seq(1, 2), col="gray80", lwd=3)

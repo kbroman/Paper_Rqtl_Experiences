@@ -19,7 +19,6 @@ Published in [J Open Res Softw](http://openresearchsoftware.metajnl.com/):
 ---
 
 # License
->>>>>>> ReadMe: Point to published article
 
 The manuscript and related files are licensed under the
 [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/).

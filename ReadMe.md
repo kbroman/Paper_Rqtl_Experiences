@@ -1,6 +1,6 @@
 ## Fourteen years of R/qtl: Just barely sustainable
 
-[![doi badge](https://zenodo.org/badge/DOI/10.5281/zenodo.2603995.svg)](https://doi.org/10.5281/zenodo.26003995)
+[![DOI](https://zenodo.org/badge/12599713.svg)](https://zenodo.org/badge/latestdoi/12599713)
 
 This repository contains the source for a manuscript that I submitted for the
 [Workshop on Sustainable Software for Science](http://wssspe.researchcomputing.org.uk)
